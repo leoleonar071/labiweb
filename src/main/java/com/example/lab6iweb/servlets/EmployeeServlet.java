@@ -22,16 +22,13 @@ public class EmployeeServlet extends HttpServlet {
                 ArrayList<Employees> listaEmpleados = employeesDao.listarEmpleados();
 
                 // mandar la lista a la vista --> job/lista.jsp
-                String vista = "/"; // DEPENDE DE LA VISTA (CAMBIARRRRRRRRRRR)
+                String vista = "/Empleados.jsp"; // DEPENDE DE LA VISTA (CAMBIARRRRRRRRRRR)
                 request.setAttribute("listaEmpleados", listaEmpleados);
                 request.getRequestDispatcher(vista).forward(request,response);
                 break;
             case "new":
-
                 break;
             case "edit":
-
-
                 break;
 
         }
