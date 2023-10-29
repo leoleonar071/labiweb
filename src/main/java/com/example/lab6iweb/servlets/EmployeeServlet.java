@@ -30,11 +30,19 @@ public class EmployeeServlet extends HttpServlet {
                 request.getRequestDispatcher(vista).forward(request,response);
                 break;
             case "new":
-                String vistaNuevoTrabajo = "/CrearEmpleado.jsp";
+                String vistaNuevoTrabajo = "/index.jsp";
                 request.getRequestDispatcher(vistaNuevoTrabajo).forward(request,response);
                 break;
             case "edit":
+                String vistaEditarEmpleado = "/Editarempleado.jsp";
+                request.getRequestDispatcher(vistaEditarEmpleado).forward(request,response);
                 break;
+
+            case "borrar":
+                //falta
+
+                break;
+
 
         }
 

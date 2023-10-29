@@ -27,7 +27,7 @@ public class EmployeesDao {
         try {
             Connection conn = DriverManager.getConnection(url, username, password);
             Statement stmt = conn.createStatement();
-            String sql = "select * from employees";
+            String sql = "select * from employees LIMIT 20 OFFSET 10";
 
             listaEmployees = new ArrayList<>();
 
@@ -108,7 +108,7 @@ public class EmployeesDao {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             try (Connection conn = DriverManager.getConnection(url, user, pass)) {
-                String sql = "SELECT * FROM employees WHERE first_name LIKE ? OR last_name LIKE ?";
+                String sql = "SELECT * FROM employees WHERE first_name LIKE ? OR last_name LIKE ? LIMIT 20 OFFSET 10";
                 try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                     pstmt.setString(1, "%" + nombreOApellido + "%");
                     pstmt.setString(2, "%" + nombreOApellido + "%");

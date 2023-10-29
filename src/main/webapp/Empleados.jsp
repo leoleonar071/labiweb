@@ -23,6 +23,8 @@
 <body>
 <h1 class='mb-3'>Lista de Empleados</h1>
 
+<a href="<%=request.getContextPath()%>/EmployeeServlet?action=new" class="btn btn-primary">Crear Empleado</a>
+
 <table>
     <tr>
         <th>Emp_no</th>
@@ -45,10 +47,10 @@
         <td><%=empleado.getGenero()%></td>
         <td><%=empleado.getHire_date()%></td>
 
-        <td><a href="">Editar</a></td>
+        <td><a href="<%=request.getContextPath()%>/EmployeeServlet?action=edit">Editar</a></td>
 
-        <td><a href="">Editar</a></td>
-        <td><a href="">Borrar</a></td>
+        <td><a href="<%=request.getContextPath()%>/EmployeeServlet">Borrar</a></td>
+
     </tr>
     <% } %>
 </table>
