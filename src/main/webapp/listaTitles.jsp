@@ -42,7 +42,7 @@
                 <td><%=titles.getFrom_date()%></td>
                 <td><%=titles.getTo_date()%></td>
 
-                <td><a href="">Editar</a></td>
+                <td><a href="<%=request.getContextPath()%>/EmployeeServlet">Editar</a></td>
                 <td><a href="">Borrar</a></td>
             </tr>
             <% } %>

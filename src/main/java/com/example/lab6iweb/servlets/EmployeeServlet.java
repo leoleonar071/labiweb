@@ -41,14 +41,24 @@ public class EmployeeServlet extends HttpServlet {
                 break;
             case "edit":
 
-                int emp_no = Integer.parseInt(request.getParameter("emp_no"));
-                Employees employees = EmployeesDao.buscarEmpleadoporid(emp_no);
+
+
                 String vistaEditarEmpleado = "/Editarempleado.jsp";
                 request.getRequestDispatcher(vistaEditarEmpleado).forward(request,response);
                 break;
 
             case "borrar":
                 //falta
+
+                break;
+
+            case "trabajos":
+
+
+
+                view = request.getRequestDispatcher("listaTitles.jsp");
+                view.forward(request, response);
+
 
                 break;
 

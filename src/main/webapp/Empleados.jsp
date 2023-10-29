@@ -24,6 +24,7 @@
 <h1 class='mb-3'>Lista de Empleados</h1>
 
 <a href="<%=request.getContextPath()%>/EmployeeServlet?action=new" class="btn btn-primary">Crear Empleado</a>
+<a href="<%=request.getContextPath()%>/EmployeeServlet?action=trabajos" class="btn btn-primary">Ver trabajos</a>
 
 <table>
     <tr>
