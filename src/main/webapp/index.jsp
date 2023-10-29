@@ -7,28 +7,32 @@
 
 </head>
 <body>
-<h1><%= "Hello World!" %>
+<h1><%= "Crear un nuevo empleado" %>
 
 </h1>
 
 <div class='container'>
-    <h1 class='mb-3'>Crear un nuevo trabajo</h1>
+
     <form method="POST" action="<%=request.getContextPath()%>/JobServlet?action=crear">
         <div class="form-group">
-            <label for="jobId">Job ID</label>
-            <input type="text" class="form-control" name="jobId" id="jobId">
+            <label for="birth_date">Birth date</label>
+            <input type="text" class="form-control" name="birth_date" id="birth_date">
         </div>
         <div class="form-group">
-            <label for="jobTitle">Job Title</label>
-            <input type="text" class="form-control" name="jobTitle" id="jobTitle">
+            <label for="first_name">Fist name</label>
+            <input type="text" class="form-control" name="first_name" id="first_name">
         </div>
         <div class="form-group">
-            <label for="minSalary">Min Salary</label>
-            <input type="text" class="form-control" name="minSalary" id="minSalary">
+            <label for="last_name">Last name</label>
+            <input type="text" class="form-control" name="last_name" id="last_name">
         </div>
         <div class="form-group">
-            <label for="maxSalary">Max Salary</label>
-            <input type="text" class="form-control" name="maxSalary" id="maxSalary">
+            <label for="genero">Genero</label>
+            <input type="text" class="form-control" name="genero" id="genero">
+        </div>
+        <div class="form-group">
+            <label for="hire_date">Hire Date</label>
+            <input type="text" class="form-control" name="hire_date" id="hire_date">
         </div>
         <a href="<%=request.getContextPath()%>/Servlet" class="btn btn-danger">Regresar</a>
         <button type="submit" class="btn btn-primary">Submit</button>
@@ -36,6 +40,6 @@
 </div>
 
 <br/>
-<a href="hello-servlet">Hello Servlet</a>
+
 </body>
 </html>
