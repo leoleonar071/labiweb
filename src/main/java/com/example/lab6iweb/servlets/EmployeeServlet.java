@@ -40,6 +40,28 @@ public class EmployeeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        String action = request.getParameter("action") == null?"crear":request.getParameter("action"); //recepciona variable action y le asignamos a una variable
+
+        EmployeesDao employeesDao = new EmployeesDao();
+
+        switch(action){
+
+            case "crear":
+
+                String jobIdrec = request.getParameter("birthDate");
+                String jobTitlerec = request.getParameter("jobTitle");
+                String minSalaryrecStr = request.getParameter("minSalary");
+                String maxSalaryrecStr = request.getParameter("maxSalary");
+
+
+
+                jobDao.crear(jobIdrec,jobTitlerec,Integer.parseInt(minSalaryrecStr),Integer.parseInt(maxSalaryrecStr)); //Realizamos los cambios
+
+                response.sendRedirect(request.getContextPath() + "/JobServlet");
+                break;
+
+        }
+
     }
 }
 
