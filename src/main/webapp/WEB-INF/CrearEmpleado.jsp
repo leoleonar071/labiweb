@@ -15,24 +15,24 @@
 
             <form method="post" action="<%=request.getContextPath()%>/EmployeeServlet">
                 <div class="mb-3">
-                    <label for="jobId">birth date</label>
-                    <input type="text" class="form-control" name = "">
+                    <label for="birthDate">birth date</label>
+                    <input type="text" class="form-control" name = "birthDate">
                 </div>
                 <div class="mb-3">
-                    <label for="jobTitle">first name</label>
-                    <input type="text" class="form-control" name = "">
+                    <label for="firstname">first name</label>
+                    <input type="text" class="form-control" name = "firstname">
                 </div>
                 <div class="mb-3">
-                    <label for="minSalary">last name</label>
-                    <input type="text" class="form-control" name = "">
+                    <label for="lastname">last name</label>
+                    <input type="text" class="form-control" name = "lastname">
                 </div>
                 <div class="mb-3">
-                    <label for="maxSalary">gender</label>
-                    <input type="text" class="form-control" name = "">
+                    <label for="gender">gender</label>
+                    <input type="text" class="form-control" name = "gender">
                 </div>
                 <div class="mb-3">
-                    <label for="maxSalary">hire date</label>
-                    <input type="text" class="form-control" name = "">
+                    <label for="hiredate">hire date</label>
+                    <input type="text" class="form-control" name = "hiredate">
                 </div>
 
                 <a href="<%=request.getContextPath()%>/EmployeeServlet" class="btn btn-danger">Regresar</a>
