@@ -7,7 +7,10 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 @WebServlet(name = "EmployeeServlet", value = "/EmployeeServlet")
 public class EmployeeServlet extends HttpServlet {
@@ -43,21 +46,30 @@ public class EmployeeServlet extends HttpServlet {
         String action = request.getParameter("action") == null?"crear":request.getParameter("action"); //recepciona variable action y le asignamos a una variable
 
         EmployeesDao employeesDao = new EmployeesDao();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // Formato de fecha esperado
 
         switch(action){
 
             case "crear":
 
-                String jobIdrec = request.getParameter("birthDate");
-                String jobTitlerec = request.getParameter("jobTitle");
-                String minSalaryrecStr = request.getParameter("minSalary");
-                String maxSalaryrecStr = request.getParameter("maxSalary");
+                String birthDaterec = request.getParameter("birthDate");
+                String firstNamerec = request.getParameter("firstname");
+                String lastNamerec = request.getParameter("lastname");
+                String genderrec = request.getParameter("gender");
+                String hireDaterec = request.getParameter("hiredate");
+
+                try{
+
+                    Date birthDateDate = dateFormat.parse(birthDaterec);
+                    Date hireDateDate = dateFormat.parse(hireDaterec);
+                    employeesDao.crearEmployee((java.sql.Date) birthDateDate,firstNamerec,lastNamerec,genderrec, (java.sql.Date) hireDateDate);
 
 
+                }catch (ParseException e){
 
-                jobDao.crear(jobIdrec,jobTitlerec,Integer.parseInt(minSalaryrecStr),Integer.parseInt(maxSalaryrecStr)); //Realizamos los cambios
+                }
 
-                response.sendRedirect(request.getContextPath() + "/JobServlet");
+                response.sendRedirect(request.getContextPath() + "/EmployeeServlet");
                 break;
 
         }
