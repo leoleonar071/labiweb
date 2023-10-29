@@ -4,6 +4,7 @@ import com.example.lab6iweb.beans.Employees;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class EmployeesDao {
 
@@ -78,6 +79,65 @@ public class EmployeesDao {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public void borrarTrabajo(int emp_no) {
+        try {
+            String user = "root";
+            String pass = "root";
+            String url = "jdbc:mysql://127.0.0.1:3306/employees";
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            try (Connection conn = DriverManager.getConnection(url, user, pass);) {
+                String sql = "DELETE FROM employees WHERE emp_no = ?";
+                try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                    pstmt.setInt(1, emp_no);
+                    pstmt.executeUpdate();
+                }
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<Employees> buscarEmpleadosPorNombreOApellido(String nombreOApellido) {
+        ArrayList<Employees> listaEmployees = new ArrayList<>();
+
+        try {
+            String user = "root";
+            String pass = "root";
+            String url = "jdbc:mysql://127.0.0.1:3306/employees";
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            try (Connection conn = DriverManager.getConnection(url, user, pass)) {
+                String sql = "SELECT * FROM employees WHERE first_name LIKE ? OR last_name LIKE ?";
+                try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                    pstmt.setString(1, "%" + nombreOApellido + "%");
+                    pstmt.setString(2, "%" + nombreOApellido + "%");
+
+                    listaEmployees = new ArrayList<>();
+
+                    ResultSet rs = pstmt.executeQuery();
+
+                    while (rs.next()) {
+                        Employees employees = new Employees();
+                        employees.setEmp_no(rs.getInt(1));
+                        employees.setBirth_date(rs.getDate(2));
+                        employees.setFirst_name(rs.getString(3));
+                        employees.setLast_name(rs.getString(4));
+                        employees.setGenero(rs.getString(5));
+                        employees.setHire_date(rs.getDate(6));
+
+                        listaEmployees.add(employees); //añadimos el empleado
+
+                    }
+
+                }
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return listaEmployees;
     }
 
 }
