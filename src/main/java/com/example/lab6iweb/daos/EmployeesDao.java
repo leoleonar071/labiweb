@@ -171,4 +171,39 @@ public class EmployeesDao {
 
 
     }
+
+
+    public Employees buscarEmpleadoporid(int emp_no) {
+        Employees employee = null;
+
+        try {
+            String user = "root";
+            String pass = "root";
+            String url = "jdbc:mysql://127.0.0.1:3306/employees";
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            try (Connection conn = DriverManager.getConnection(url, user, pass)) {
+                String sql = "SELECT * FROM employees WHERE emp_no = ?";
+                try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                    pstmt.setInt(1, emp_no);
+
+                    ResultSet rs = pstmt.executeQuery();
+
+                    if (rs.next()) {
+                        employee = new Employees();
+
+                        employee.setBirth_date(rs.getDate("birth_date"));
+                        employee.setFirst_name(rs.getString("first_name"));
+                        employee.setLast_name(rs.getString("last_name"));
+                        employee.setGenero(rs.getString("genero"));
+                        employee.setHire_date(rs.getDate("hire_date"));
+                    }
+                }
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return employee;
+    }
 }
