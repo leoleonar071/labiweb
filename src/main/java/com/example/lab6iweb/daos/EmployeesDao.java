@@ -81,6 +81,7 @@ public class EmployeesDao {
         }
     }
 
+<<<<<<< HEAD
     public void borrarTrabajo(int emp_no) {
         try {
             String user = "root";
@@ -139,5 +140,15 @@ public class EmployeesDao {
 
         return listaEmployees;
     }
+=======
+
+
+
+
+
+
+    }
+
+>>>>>>> a3a72ffcb04f777a56cfc52b89cd7125b8465417
 
 }
