@@ -57,4 +57,27 @@ public class EmployeesDao {
 
     }
 
+    public void actualizarEmpleados(int emp_no, Date birth_date, String first_name, String last_name,String genero,Date hire_date) {
+        try {
+            String user = "root";
+            String pass = "root";
+            String url = "jdbc:mysql://127.0.0.1:3306/employees";
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            try (Connection conn = DriverManager.getConnection(url, user, pass);) {
+                String sql = "UPDATE employees  birth_date = ?, first_name = ?, last_name = ?, gender = ?,hire_date = ? "
+                        + "WHERE SET emp_no = ?";
+                try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                    pstmt.setDate(1, birth_date);
+                    pstmt.setString(2, first_name);
+                    pstmt.setString(3, last_name);
+                    pstmt.setString(4, genero);
+                    pstmt.setDate(4, hire_date);
+                    pstmt.executeUpdate();
+                }
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
