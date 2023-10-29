@@ -8,7 +8,7 @@ import java.util.List;
 
 public class EmployeesDao {
 
-    public ArrayList<Employees> listarEmpleados(){
+    public ArrayList<Employees> listarEmpleados() {
 
 
         try {
@@ -54,11 +54,9 @@ public class EmployeesDao {
         }
 
 
-
-
     }
 
-    public void actualizarEmpleados(int emp_no, Date birth_date, String first_name, String last_name,String genero,Date hire_date) {
+    public void actualizarEmpleados(int emp_no, Date birth_date, String first_name, String last_name, String genero, Date hire_date) {
         try {
             String user = "root";
             String pass = "root";
@@ -81,7 +79,7 @@ public class EmployeesDao {
         }
     }
 
-<<<<<<< HEAD
+
     public void borrarTrabajo(int emp_no) {
         try {
             String user = "root";
@@ -140,15 +138,37 @@ public class EmployeesDao {
 
         return listaEmployees;
     }
-=======
 
+    public void crearEmployee(Date birthDate, String firstName, String lastName, String genero, Date hireDate) {
+        //EVALUAR GENERO
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
 
+        //Parámetros de Conexión MYSQL
+        String url = "jdbc:mysql://localhost:3306/employees";
+        String username = "root";
+        String password = "root";
 
+        String sql = "insert into jobs (birthDate,firstName, lastName, genero, hireDate) values (?,?,?,?,?)";
 
+        try (Connection conn = DriverManager.getConnection(url, username, password);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setDate(1, birthDate);
+            pstmt.setString(2, firstName);
+            pstmt.setString(3, lastName);
+            pstmt.setString(4, genero);
+            pstmt.setDate(5, hireDate);
+
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
 
     }
-
->>>>>>> a3a72ffcb04f777a56cfc52b89cd7125b8465417
-
 }
