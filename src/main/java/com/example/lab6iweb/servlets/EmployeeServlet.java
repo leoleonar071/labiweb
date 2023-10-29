@@ -20,6 +20,7 @@ public class EmployeeServlet extends HttpServlet {
         EmployeesDao employeesDao = new EmployeesDao();
 
         String action = request.getParameter("action") == null?"lista":request.getParameter("action"); //recepciona variable action y le asignamos a una variable
+        RequestDispatcher view;
         switch (action){
             case "lista":
                 ArrayList<Employees> listaEmpleados = employeesDao.listarEmpleados();
@@ -30,10 +31,18 @@ public class EmployeeServlet extends HttpServlet {
                 request.getRequestDispatcher(vista).forward(request,response);
                 break;
             case "new":
-                String vistaNuevoTrabajo = "/index.jsp";
-                request.getRequestDispatcher(vistaNuevoTrabajo).forward(request,response);
+
+
+
+                view = request.getRequestDispatcher("index.jsp");
+                view.forward(request, response);
+
+
                 break;
             case "edit":
+
+                int emp_no = Integer.parseInt(request.getParameter("emp_no"));
+                Employees employees = EmployeesDao.buscarEmpleadoporid(emp_no);
                 String vistaEditarEmpleado = "/Editarempleado.jsp";
                 request.getRequestDispatcher(vistaEditarEmpleado).forward(request,response);
                 break;
@@ -50,6 +59,8 @@ public class EmployeeServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        request.setCharacterEncoding("UTF-8");
 
         String action = request.getParameter("action") == null?"crear":request.getParameter("action"); //recepciona variable action y le asignamos a una variable
 
