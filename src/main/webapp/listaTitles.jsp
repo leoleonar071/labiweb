@@ -27,11 +27,9 @@
         <table>
             <tr>
                 <th>Emp_no</th>
-                <th>Birth date</th>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>genero</th>
-                <th>hire date</th>
+                <th>Title</th>
+                <th>From Date</th>
+                <th>To Date</th>
                 <th></th>
                 <th></th>
             </tr>
