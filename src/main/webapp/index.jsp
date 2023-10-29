@@ -34,7 +34,7 @@
             <label for="hire_date">Hire Date</label>
             <input type="text" class="form-control" name="hire_date" id="hire_date">
         </div>
-        <a href="<%=request.getContextPath()%>/Servlet" class="btn btn-danger">Regresar</a>
+        <a href="<%=request.getContextPath()%>/EmployeeServlet" class="btn btn-danger">Regresar</a>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
